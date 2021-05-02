@@ -5,7 +5,7 @@ import IconSend from "@material-ui/icons/Send";
 import ChatLog from "../../components/chatLog/ChatLog";
 
 function ChatRoom() {
-  const { sendMessage } = useContext(GlobalContext);
+  const { sendMessage, open } = useContext(GlobalContext);
   const [message, setMessage] = useState("");
 
   const handleSend = () => {
@@ -15,22 +15,31 @@ function ChatRoom() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSend();
+    }
+  };
+
   return (
     <div className="chatRoom">
       <ChatLog />
       <div className="sendMessage">
-        <div className="inputRow">
-          <input
-            onChange={(e) => setMessage(e.target.value)}
-            className="input"
-            type="text"
-            placeholder="Message"
-            value={message}
-          />
-          <div className="iconButton" onClick={() => handleSend()}>
-            <IconSend />
+        {open && open.messages && (
+          <div className="inputRow">
+            <input
+              onChange={(e) => setMessage(e.target.value)}
+              className="input"
+              type="text"
+              placeholder="Message"
+              value={message}
+              onKeyUp={(e) => handleKeyDown(e)}
+            />
+            <div className="iconButton" onClick={() => handleSend()}>
+              <IconSend />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

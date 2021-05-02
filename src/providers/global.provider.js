@@ -5,18 +5,26 @@ const GlobalContext = createContext({});
 function GlobalProvider({ children }) {
   const [name, setName] = useState("");
   const [conversations, setConversations] = useState([]);
-  const [open, setOpen] = useState([]);
+  const [open, setOpen] = useState({});
 
-  const time = Date.now();
+  const getCurrentTime = () => {
+    const time = Date.now();
+    return time;
+  };
 
   const addConversation = () => {
-    setConversations([...conversations, { id: time, messages: [] }]);
+    const uId = getCurrentTime();
+    const newConversations = [...conversations, { id: uId, messages: [] }];
+    setConversations(newConversations);
+    const open = newConversations.find((obj) => obj.id === uId);
+    setOpen(open || {});
   };
 
   const deleteConversation = (uId) => {
-    console.log("click");
-    const newconversations = conversations.filter((item) => item.id !== uId);
-    setConversations(newconversations);
+    const newConversations = conversations.filter((item) => item.id !== uId);
+    const open = newConversations.find((obj) => obj.id !== uId);
+    setConversations(newConversations);
+    setOpen(open || {});
   };
 
   const openConversation = (uId) => {
@@ -26,7 +34,19 @@ function GlobalProvider({ children }) {
 
   const sendMessage = (message) => {
     let newOpen = { ...open };
-    newOpen.messages.push({ text: message, time: time, usermessage: true });
+    newOpen.messages.push({
+      text: message,
+      time: getCurrentTime(),
+      usermessage: true,
+      name: name,
+    });
+    setOpen(newOpen);
+  };
+
+  const addAdresateMessage = (message) => {
+    let objCopy = { ...message };
+    let newOpen = { ...open };
+    newOpen.messages.push(Object.assign(objCopy, { time: getCurrentTime() }));
     setOpen(newOpen);
   };
 
@@ -39,6 +59,7 @@ function GlobalProvider({ children }) {
         conversations,
         deleteConversation,
         openConversation,
+        addAdresateMessage,
         sendMessage,
         open,
       }}

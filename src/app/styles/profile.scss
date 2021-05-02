@@ -1,0 +1,55 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+  background: rgb(236, 236, 236);
+  background: linear-gradient(
+    15deg,
+    rgba(236, 236, 236, 0.5578606442577031) 43%,
+    rgba(144, 204, 244, 0.6194852941176471) 88%
+  );
+  .profileContainer {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    margin-top: 300px;
+    font-size: 20px;
+    width: 100%;
+    max-width: 400px;
+    height: 350px;
+
+    .iconButton {
+      width: 100%;
+    }
+    .editContainer {
+      align-self: center;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .label {
+      color: var(--blue);
+    }
+    .name {
+      text-transform: capitalize;
+    }
+    .input {
+      width: 100%;
+      font-size: 20px;
+      padding: 8px;
+      background-color: var(--default);
+      margin: 20px 0;
+      border: none;
+      border-radius: 10px;
+      border: black;
+    }
+  }
+  .options {
+    display: flex;
+
+    .button {
+      margin: 10px 10px;
+    }
+  }
+}

@@ -4,6 +4,8 @@ import { GlobalContext } from "../../../providers/global.provider";
 import IconAdd from "@material-ui/icons/AddCircle";
 import Tooltip from "../tooltip/Tooltip";
 import IconDelete from "@material-ui/icons/Delete";
+import IconSettings from "@material-ui/icons/Settings";
+import { Link } from "react-router-dom";
 
 function Navigation() {
   const {
@@ -16,10 +18,17 @@ function Navigation() {
 
   return (
     <nav className="chatNavigation">
-      <header className="header">
+      <Link className="header" to="profile">
         <div className="image"></div>
-        <h4 className="name">{name}</h4>
-      </header>
+        <div className="nameContainer">
+          <span className="name">{name}</span>
+          <div className="settingsContainer">
+            <span>Settings</span>
+            <IconSettings className="icon" />
+          </div>
+        </div>
+      </Link>
+
       <div className="divider" />
       <div className="tools">
         <Tooltip text="Start new conversation">
@@ -41,7 +50,10 @@ function Navigation() {
             <Tooltip text="delete conversation">
               <div
                 className="deleteButton"
-                onClick={() => deleteConversation(item.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteConversation(item.id);
+                }}
               >
                 <IconDelete fontSize="small" />
               </div>
