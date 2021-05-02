@@ -1,0 +1,58 @@
+.chatlog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  .chatContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    width: 100%;
+    overflow: hidden;
+
+    .chatMessage {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      margin: 15px;
+      transition-duration: 0.8s;
+      transform: translateX(-75px);
+      .chatHead {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        margin-right: 15px;
+        .name {
+          margin-top: 5px;
+          text-transform: capitalize;
+          font-size: 12px;
+        }
+      }
+      .image {
+        width: 30px;
+        height: 30px;
+        // margin-right: 20px;
+        border-radius: 100%;
+        background-image: url("../../styles/pictures/avatar.png");
+        background-repeat: no-repeat;
+        background-size: 110%;
+      }
+      &:hover {
+        transform: none;
+      }
+      .time {
+        font-size: 12px;
+        margin: 10px;
+      }
+      .text {
+        max-width: 300px;
+        width: 100%;
+      }
+    }
+  }
+}

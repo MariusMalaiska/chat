@@ -1,0 +1,12 @@
+.chat {
+  display: flex;
+  direction: row;
+  margin: 0;
+  height: 100%;
+  background: rgb(236, 236, 236);
+  background: linear-gradient(
+    15deg,
+    rgba(236, 236, 236, 0.5578606442577031) 43%,
+    rgba(144, 204, 244, 0.6194852941176471) 88%
+  );
+}

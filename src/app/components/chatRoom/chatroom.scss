@@ -1,0 +1,40 @@
+.chatRoom {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.sendMessage {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 20px;
+  height: 100px;
+  width: 100%;
+  background: var(--primary);
+
+  .input {
+    max-width: 500px;
+    width: 100%;
+    font-size: 20px;
+    padding: 8px;
+    background-color: var(--default);
+    margin: 20px;
+    border: none;
+    border-radius: 10px;
+    border: black;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.inputRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}

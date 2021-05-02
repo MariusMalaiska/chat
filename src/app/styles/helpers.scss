@@ -24,7 +24,7 @@ body {
   align-items: center;
   max-width: 1200px;
   width: 100%;
-  height: 100%;
+  //   height: 100%;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -33,4 +33,16 @@ body {
 
 .inputError {
   color: var(--error);
+}
+
+.iconButton {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition-duration: 0.3s;
+  &:hover {
+    cursor: pointer;
+    color: var(--blue);
+  }
 }

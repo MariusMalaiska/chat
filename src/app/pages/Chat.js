@@ -1,7 +1,13 @@
+import Navigation from "../components/navigation/Navigation";
+import ChatRoom from "../components/chatRoom/ChatRoom";
+
 function Chat() {
   return (
     <>
-      <h1>Chat</h1>
+      <div className="chat">
+        <Navigation />
+        <ChatRoom />
+      </div>
     </>
   );
 }
