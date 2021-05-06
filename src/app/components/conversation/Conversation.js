@@ -1,12 +1,14 @@
 import "./conversation.scss";
+import { useContext } from "react";
+import { GlobalContext } from "../../../providers/global.provider";
 
 function Conversation(props) {
+  const { open } = useContext(GlobalContext);
   const { openroom } = props;
 
   const getTime = (time) => {
     const dt = new Date(time);
-    let timestamp = `${dt.getHours()}:${dt.getMinutes()}:${dt.getSeconds()}`;
-
+    let timestamp = dt.toLocaleTimeString();
     return timestamp;
   };
 
@@ -15,7 +17,7 @@ function Conversation(props) {
       <div className="time">{getTime(openroom.time)}</div>
       <div className="chatHead">
         <div className="image" />
-        <div className="name"> {openroom.name} </div>
+        <div className="name"> {open.name} </div>
       </div>
       <div className="text">{openroom.text}</div>
     </div>

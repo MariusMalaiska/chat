@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 function Navigation() {
   const {
     name,
+    open,
     addConversation,
     conversations,
     deleteConversation,
@@ -42,11 +43,13 @@ function Navigation() {
         {conversations.map((item, idx) => (
           <div
             key={item.id}
-            className="conversation"
+            className={`conversation ${item.id === open.id ? "active" : ""}`}
             onClick={() => openConversation(item.id)}
           >
-            <div className="image"></div>
-            <h4 className="name"> conversation </h4>
+            <div className="chatHead">
+              <div className="image"></div>
+              <h4 className="name">{item.name}</h4>
+            </div>
             <Tooltip text="delete conversation">
               <div
                 className="deleteButton"

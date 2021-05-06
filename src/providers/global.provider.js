@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import { names } from "../mock/names";
 
 const GlobalContext = createContext({});
 
@@ -12,9 +13,15 @@ function GlobalProvider({ children }) {
     return time;
   };
 
+  const getRandom = (int) => Math.floor(Math.random() * int);
+
   const addConversation = () => {
     const uId = getCurrentTime();
-    const newConversations = [...conversations, { id: uId, messages: [] }];
+    const name = names[getRandom(20)];
+    const newConversations = [
+      ...conversations,
+      { id: uId, name: name, messages: [] },
+    ];
     setConversations(newConversations);
     const open = newConversations.find((obj) => obj.id === uId);
     setOpen(open || {});

@@ -10,7 +10,7 @@ function ChatRoom() {
   const [messages, setMessages] = useState([]);
   const inputEl = useRef(null);
 
-  const random = Math.floor(Math.random() * 7);
+  const getRandom = (int) => Math.floor(Math.random() * int);
 
   const renderMessages = useCallback(() => {
     if (open && open.messages) {
@@ -27,7 +27,7 @@ function ChatRoom() {
       messages[messages.length - 1].usermessage === true
     ) {
       setTimeout(() => {
-        addAdresateMessage(adresateMessages[random]);
+        addAdresateMessage(adresateMessages[getRandom(7)]);
       }, 1000);
     } else if (
       messages.length === 0 &&
