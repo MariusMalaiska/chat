@@ -1,5 +1,7 @@
 import "./conversation.scss";
+
 import { useContext } from "react";
+
 import { GlobalContext } from "../../../providers/global.provider";
 
 function Conversation(props) {

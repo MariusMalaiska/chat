@@ -1,13 +1,15 @@
 .login {
   display: flex;
+  position: relative;
   justify-content: center;
   margin: 0;
   height: 100%;
-  background: rgb(236, 236, 236);
+  overflow: hidden;
+  background: rgb(64, 186, 255);
   background: linear-gradient(
-    15deg,
-    rgba(236, 236, 236, 0.5578606442577031) 43%,
-    rgba(144, 204, 244, 0.6194852941176471) 88%
+    52deg,
+    rgba(64, 186, 255, 1) 40%,
+    rgba(66, 193, 255, 1) 100%
   );
 }
 
@@ -15,37 +17,85 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 320px;
+  max-width: 380px;
+  width: 100%;
   margin-top: 280px;
-  padding: 30px;
+  padding: 0 60px 30px 60px;
+  box-sizing: border-box;
   background-color: var(--primary);
   border-radius: 10px;
-  .icon {
-    color: var(--blue);
-    font-size: 60px;
-    margin: 10px 0 35px 0;
+  z-index: 1;
+  .heading {
+    margin: 0 0 15px 0;
+    color: var(--gray);
   }
+  .icon {
+    position: relative;
+    transform: translateY(-50px);
+    height: 120px;
+    width: 120px;
+    background-image: url("../styles/pictures/pngaaa.com-293633.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
   .input {
     width: 100%;
-    font-size: 20px;
-    padding: 8px;
-    background-color: var(--default);
-    margin: 20px 0;
+    font-size: 18px;
+    padding: 10px;
+    background-color: var(--inputs);
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     border: black;
+    margin: 20px 0;
+    &:focus {
+      outline-color: var(--blue);
+    }
   }
 }
 .button {
-  margin-top: 30px;
+  width: 150px;
+  font-size: 18px;
   background-color: transparent;
-  border: 1px solid var(--primary);
-  border-radius: 5px;
-  //   color: var(--default);
-  background-color: var(--yellow);
+  border: none;
+  color: var(--primary);
+  border-radius: 20px;
+  background-color: var(--blue);
   padding: 10px 15px;
   text-align: center;
   text-decoration: none;
+  margin: 20px 0;
+}
+
+$bubbles_total: 30;
+
+.bubble {
+  background-color: #f1f1f3;
   display: inline-block;
-  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  @for $bubble from 1 through $bubbles_total {
+    &-#{$bubble} {
+      opacity: (random(50)) * 0.01;
+      left: #{random(100)}vw;
+      top: #{random(100)}vh;
+      animation: move-#{$bubble} #{40 + $bubble * 0.02}s infinite;
+      transform: translateY(0, 0);
+      transform: translateX(0, 0);
+    }
+  }
+}
+
+@for $bubble from 1 through $bubbles_total {
+  @keyframes move-#{$bubble} {
+    0% {
+      transform: translateX(random(100) - 100vw) scale((random(200) + 5) * 0.01);
+    }
+    100% {
+      transform: translateY(random(100) - 100vh);
+      opacity: 0.2;
+    }
+  }
 }

@@ -15,10 +15,12 @@ body {
 
 :root {
   --default: #ececec;
-  --primary: #90ccf4;
-  --blue: #5da2d5;
+  --primary: #ffffff;
+  --blue: #379cff;
   --yellow: #f3d250;
   --error: #8b0000;
+  --inputs: #f2f2f2;
+  --gray: #bbbbbb;
 }
 
 .container {
@@ -35,6 +37,7 @@ body {
 
 .inputError {
   color: var(--error);
+  font-size: 13px;
 }
 
 .iconButton {

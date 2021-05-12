@@ -1,11 +1,15 @@
 import "./navigation.scss";
+
 import { useContext } from "react";
-import { GlobalContext } from "../../../providers/global.provider";
+import { Link } from "react-router-dom";
+
 import IconAdd from "@material-ui/icons/AddCircle";
-import Tooltip from "../tooltip/Tooltip";
 import IconDelete from "@material-ui/icons/Delete";
 import IconSettings from "@material-ui/icons/Settings";
-import { Link } from "react-router-dom";
+
+import Tooltip from "../tooltip/Tooltip";
+
+import { GlobalContext } from "../../../providers/global.provider";
 
 function Navigation() {
   const {

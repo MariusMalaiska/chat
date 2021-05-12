@@ -1,10 +1,12 @@
-import { useState, createContext } from "react";
+import { createContext, useState } from "react";
+
 import { names } from "../mock/names";
 
 const GlobalContext = createContext({});
 
 function GlobalProvider({ children }) {
   const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const [conversations, setConversations] = useState([]);
   const [open, setOpen] = useState({});
 
@@ -62,6 +64,8 @@ function GlobalProvider({ children }) {
       value={{
         name,
         setName,
+        password,
+        setPassword,
         addConversation,
         conversations,
         deleteConversation,

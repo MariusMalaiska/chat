@@ -1,11 +1,10 @@
 import { useState, useContext } from "react";
-import IconChat from "@material-ui/icons/Chat";
-import { GlobalContext } from "../../providers/global.provider";
 import { useHistory } from "react-router-dom";
 
+import { GlobalContext } from "../../providers/global.provider";
+
 function Login() {
-  const { name, setName } = useContext(GlobalContext);
-  const [password, setPassword] = useState("");
+  const { name, setName, password, setPassword } = useContext(GlobalContext);
   const [errors, setErrors] = useState("");
   const history = useHistory();
 
@@ -34,9 +33,14 @@ function Login() {
 
   return (
     <div className="login">
+      {Array.from(Array(30)).map((bubble, index) => (
+        <div key={index} className={`bubble bubble-${index + 1}`}></div>
+      ))}
+      <div className="login"></div>
       <div className="container">
         <div className="loginContainer">
-          <IconChat className="icon" />
+          <div className="icon"></div>
+          <h1 className="heading">Login</h1>
           <input
             onChange={(e) => setName(e.target.value)}
             className="input"
@@ -53,7 +57,7 @@ function Login() {
           />
           {!!errors && <div className="inputError">{errors}</div>}
           <button className="button" onClick={login}>
-            Login
+            Sign in
           </button>
         </div>
       </div>

@@ -1,8 +1,10 @@
 import "./chatLog.scss";
-import { useContext, useState, useEffect, useCallback, useRef } from "react";
-import { GlobalContext } from "../../../providers/global.provider";
-import { FetchContext } from "../../../providers/fech.provider";
+
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
+
 import Conversation from "../conversation/Conversation";
+import { FetchContext } from "../../../providers/fech.provider";
+import { GlobalContext } from "../../../providers/global.provider";
 
 function ChatRoom() {
   const { name, open, addAdresateMessage } = useContext(GlobalContext);

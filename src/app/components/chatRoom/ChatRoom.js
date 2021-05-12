@@ -1,8 +1,11 @@
 import "./chatroom.scss";
-import { useState, useContext } from "react";
-import { GlobalContext } from "../../../providers/global.provider";
+
+import { useContext, useState } from "react";
+
 import IconSend from "@material-ui/icons/Send";
+
 import ChatLog from "../../components/chatLog/ChatLog";
+import { GlobalContext } from "../../../providers/global.provider";
 
 function ChatRoom() {
   const { sendMessage, open } = useContext(GlobalContext);

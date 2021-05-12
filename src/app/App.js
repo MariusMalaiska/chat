@@ -1,18 +1,20 @@
-import Login from "./pages/Login";
+import { Route, Switch } from "react-router-dom";
+
 import Chat from "./pages/Chat";
+import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import { Switch, Route } from "react-router-dom";
+import { paths } from "./constants";
 
 function App() {
   return (
     <Switch>
-      <Route exact path="/" Component={Login}>
+      <Route exact path={paths.login} Component={Login}>
         <Login />
       </Route>
-      <Route exact path="/chat">
+      <Route exact path={paths.chat} Component={Chat}>
         <Chat />
       </Route>
-      <Route exact path="/profile" Component={Profile}>
+      <Route exact path={paths.profile} Component={Profile}>
         <Profile />
       </Route>
     </Switch>

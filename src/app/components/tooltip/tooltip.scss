@@ -1,6 +1,5 @@
 .tooltip {
   position: relative;
-
   .helperText {
     border-radius: 10px;
     background-color: var(--blue);
@@ -13,6 +12,8 @@
       position: absolute;
       padding: 5px 8px;
       width: max-content;
+      top: 0;
+      left: 0;
       top: -35px;
       left: 40px;
     }
