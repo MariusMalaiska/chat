@@ -16,12 +16,17 @@ body {
 :root {
   --default: #ececec;
   --primary: #ffffff;
+  --primary--rgb: 255, 255, 255;
   --blue: #379cff;
+  --blue--rgb: 55, 156, 255;
+  --light--blue: #41bbff;
   --yellow: #f3d250;
   --error: #8b0000;
   --inputs: #f2f2f2;
   --gray: #bbbbbb;
 }
+
+$bubbles_total: 30;
 
 .container {
   display: flex;
@@ -49,5 +54,36 @@ body {
   &:hover {
     cursor: pointer;
     color: var(--blue);
+  }
+}
+
+.bubble {
+  background-color: var(--primary);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  @for $bubble from 1 through $bubbles_total {
+    &-#{$bubble} {
+      opacity: (random(50)) * 0.01;
+      left: #{random(100)}vw;
+      top: #{random(100)}vh;
+      animation: move-#{$bubble} #{40 + $bubble * 0.02}s infinite;
+      transform: translateY(0, 0);
+      transform: translateX(0, 0);
+    }
+  }
+}
+
+@for $bubble from 1 through $bubbles_total {
+  @keyframes move-#{$bubble} {
+    0% {
+      transform: translateX(random(100) - 100vw) scale((random(200) + 5) * 0.01);
+    }
+    100% {
+      transform: translateY(random(100) - 100vh);
+      opacity: 0.2;
+    }
   }
 }

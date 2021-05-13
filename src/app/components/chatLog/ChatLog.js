@@ -10,7 +10,7 @@ function ChatRoom() {
   const { name, open, addAdresateMessage } = useContext(GlobalContext);
   const { getMessages, adresateMessages, error } = useContext(FetchContext);
   const [messages, setMessages] = useState([]);
-  const inputEl = useRef(null);
+  const chatContainer = useRef(null);
 
   const getRandom = (int) => Math.floor(Math.random() * int);
 
@@ -43,37 +43,47 @@ function ChatRoom() {
 
   useEffect(() => {
     renderMessages();
-    scrollToBottom();
+    scrollToRef();
   }, [renderMessages, open]);
 
   useEffect(() => {
     getMessages();
   }, [getMessages]);
 
-  const scrollToBottom = () => {
-    inputEl.current.scrollIntoView({ behavior: "smooth" });
+  const scrollToRef = () => {
+    const scroll =
+      chatContainer.current.scrollHeight - chatContainer.current.clientHeight;
+    chatContainer.current.scrollTo(0, scroll);
   };
 
   return (
-    <div className="chatlog">
-      <div className="chatContainer">
-        {open && !open.messages ? (
-          <div>
-            <h2>
-              Hello, <span className="name">{name}</span> You have no open
-              Conversations.
-            </h2>
-            <h3> add one ;D</h3>
-          </div>
-        ) : (
-          messages.map((item) => (
-            <Conversation key={item.time} openroom={item} messages={messages} />
-          ))
-        )}
-        {!!error && <div className="inputError">{error}</div>}
-        <div ref={inputEl} />
+    <>
+      <div className="chatlog">
+        {Array.from(Array(30)).map((bubble, index) => (
+          <div key={index} className={`bubble bubble-${index + 1}`}></div>
+        ))}
+        <div className="chatContainer" ref={chatContainer}>
+          {open && !open.messages ? (
+            <div className="infoMessage">
+              <h2>
+                Hello, <span className="name">{name}</span> You have no open
+                Conversations.
+              </h2>
+              <h3> Add one ;D</h3>
+            </div>
+          ) : (
+            messages.map((item) => (
+              <Conversation
+                key={item.time}
+                openroom={item}
+                messages={messages}
+              />
+            ))
+          )}
+          {!!error && <div className="inputError">{error}</div>}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

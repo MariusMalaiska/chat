@@ -28,7 +28,7 @@ function ChatRoom() {
     <div className="chatRoom">
       <ChatLog />
       <div className="sendMessage">
-        {open && open.messages && (
+        {open?.messages && (
           <div className="inputRow">
             <input
               onChange={(e) => setMessage(e.target.value)}

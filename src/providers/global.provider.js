@@ -55,7 +55,9 @@ function GlobalProvider({ children }) {
   const addAdresateMessage = (message) => {
     let objCopy = { ...message };
     let newOpen = { ...open };
-    newOpen.messages.push(Object.assign(objCopy, { time: getCurrentTime() }));
+    newOpen.messages.push(
+      Object.assign(objCopy, { name: newOpen.name, time: getCurrentTime() })
+    );
     setOpen(newOpen);
   };
 

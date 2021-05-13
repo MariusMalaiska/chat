@@ -66,36 +66,3 @@
   text-decoration: none;
   margin: 20px 0;
 }
-
-$bubbles_total: 30;
-
-.bubble {
-  background-color: #f1f1f3;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  position: absolute;
-  @for $bubble from 1 through $bubbles_total {
-    &-#{$bubble} {
-      opacity: (random(50)) * 0.01;
-      left: #{random(100)}vw;
-      top: #{random(100)}vh;
-      animation: move-#{$bubble} #{40 + $bubble * 0.02}s infinite;
-      transform: translateY(0, 0);
-      transform: translateX(0, 0);
-    }
-  }
-}
-
-@for $bubble from 1 through $bubbles_total {
-  @keyframes move-#{$bubble} {
-    0% {
-      transform: translateX(random(100) - 100vw) scale((random(200) + 5) * 0.01);
-    }
-    100% {
-      transform: translateY(random(100) - 100vh);
-      opacity: 0.2;
-    }
-  }
-}

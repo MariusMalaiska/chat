@@ -31,8 +31,14 @@ function Login() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      login(e);
+    }
+  };
+
   return (
-    <div className="login">
+    <div className="login" onKeyUp={(e) => handleKeyDown(e)}>
       {Array.from(Array(30)).map((bubble, index) => (
         <div key={index} className={`bubble bubble-${index + 1}`}></div>
       ))}

@@ -5,10 +5,11 @@
   margin: 15px;
   transition-duration: 0.8s;
   transform: translateX(-80px);
+  width: 100%;
+
   .chatHead {
     display: flex;
     flex-direction: column;
-    justify-items: center;
     align-items: center;
     margin: 0 15px;
     .name {
@@ -26,7 +27,16 @@
     background-size: 110%;
   }
   &:hover {
-    transform: none;
+    transform: unset;
+  }
+  &::before {
+    content: "";
+    background-color: rgba(var(--primary--rgb), 0.1);
+    position: absolute;
+    top: -10px;
+    height: 120%;
+    width: 100vh;
+    z-index: -1;
   }
   .time {
     font-size: 12px;
@@ -34,7 +44,7 @@
   }
   .text {
     max-width: 300px;
-    width: 100%;
+    width: max-content;
   }
 }
 

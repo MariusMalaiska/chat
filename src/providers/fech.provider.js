@@ -11,7 +11,7 @@ function FetchProvider({ children }) {
     setLoading(true);
     try {
       let results = await fetch(
-        "https://api.jsonbin.io/b/608edf2a92cb9267d0c9e4f7",
+        "https://api.jsonbin.io/b/609d37f2762a346e56d11a45",
         {
           method: "GET",
           headers: {
